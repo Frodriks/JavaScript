@@ -5,7 +5,7 @@
 console.log('Hello, World');
 
 //Variables
-let greeting = 'Hej från en vaiable';
+let greeting = 'Hej från en variable';
 console.log(greeting);
 greeting = 3;
 console.log(greeting);
@@ -133,7 +133,7 @@ for(let i = 0; i < persons.length; i++) {
 //Lambda loop
 persons.forEach(x => console.log(x));
 
-//Objects
+//Objects : Key : Value
 
 let mike = {
     firstName: 'Mike',
@@ -147,3 +147,71 @@ console.log(mike);
 console.log(`First name: ${mike.firstName}`);
 let mikeStr = `${mike.firstName} ${mike.lastName}, age: ${mike.age}`;
 console.log(mikeStr);
+
+let mikeAdvanced = {
+    firstName: 'Mike',
+    lastName: 'Bäck',
+    age: 38,
+    hobbies: ['music','programming','reading','games']
+};
+
+console.log(mikeAdvanced); //Object
+let mikeJSON = JSON.stringify(mikeAdvanced); //Object to JASON
+console.log(mikeJSON);
+console.log(JSON.parse(mikeJSON)); //JSON (Java-Script-Object-Notation)
+
+//Loop over object
+for(let propertyName in mikeAdvanced) {
+    let propertyValue = mikeAdvanced[propertyName];
+    console.log(propertyName, propertyValue);
+}
+
+//Loop through object and array inside of object
+for(let propertyName in mikeAdvanced) {             //Loop over object
+    let propertyValue = mikeAdvanced[propertyName]; //Get value from key
+    if(Array.isArray(propertyValue) === true){      //Check if array
+        for(let hobby of propertyValue) {           //Loop over array
+            console.log("Hobby: " + hobby)
+        }
+    } else {
+        console.log(propertyName + " + " + propertyValue);
+    } 
+}
+
+//Connection to HTML
+//Ask JS to create a new element
+let myDiv = document.createElement('div');
+//Add som HTML
+myDiv.innerHTML = `
+    <h1>Hello from JS!</h1>
+    <p>This text is from JavaScript, my age is ${mike.age}</p>
+`;
+
+//Grab the body tag
+let body = document.querySelector('body');
+
+//Add the div to the HTML
+body.append(myDiv);
+
+//Another way to add data
+let myBands = [
+{
+    name: 'The Beatles',
+    genre: 'Pop'
+},
+{
+    name: 'The Rolling Stones',
+    genre: 'Rock'
+}
+];
+
+//Grab the bands div
+let bandsDiv = document.querySelector('#bands');
+for(let band of myBands) {
+    bandsDiv.innerHTML += `
+    <div class="band">
+        <h2>${band.name}</h2>
+        <p>Genre: ${band.genre}</p>
+        </div>
+    `
+}
