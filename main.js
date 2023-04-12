@@ -207,11 +207,62 @@ let myBands = [
 
 //Grab the bands div
 let bandsDiv = document.querySelector('#bands');
-for(let band of myBands) {
-    bandsDiv.innerHTML += `
+for(let band of myBands) {             //+= är en forkortning
+    bandsDiv.innerHTML += ` 
     <div class="band">
         <h2>${band.name}</h2>
         <p>Genre: ${band.genre}</p>
-        </div>
-    `
+    </div>
+    `;
 }
+
+//Functions
+function sayHello() {
+    console.log('Hello');
+}
+const sayHello2 = () => {
+    console.log('Hello 2');
+}
+sayHello();
+sayHello2();
+
+/* Different ways of declaring the sam function */
+//Function decleration
+function add(a, b) {
+    return a + b;
+}
+//Arrow function
+const add2 = (a, b) => {
+    return a + b;
+}
+//Function expression
+const add3 = function(a, b) {
+    return a + b;
+}
+
+//Arrow function with implicit return
+const add4 = (a, b) => a + b;
+
+//Arrow function with implicit return and one parameter
+const add5 = a => a + 5;
+
+console.log(add(1, 2));
+console.log(add2(1, 2));
+console.log(add3(1, 2));
+console.log(add4(1, 2));
+console.log(add5(1));
+
+//Classes
+class Person {
+   constructor(name, age, hobby) {
+    this.name = name;
+    this.age = age;
+    this.hobby = hobby;
+   }
+   greetings() {
+    console.log(`Hi, my name is: ${this.name} and I am ${this.age}`);
+    console.log('I enjoy: ' + this.hobby);
+   }
+}
+const mikeClass = new Person('Mike', 38, 'Music');
+mikeClass.greetings();
